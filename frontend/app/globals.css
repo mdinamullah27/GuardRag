@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  background: rgba(99, 102, 241, 0.28);
+}
+
+/* pdf.js text layer: transparent text, native selection still works */
+.textLayer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  line-height: 1;
+  text-size-adjust: none;
+  forced-color-adjust: none;
+  transform-origin: 0 0;
+  z-index: 2;
+  caret-color: transparent;
+}
+
+.textLayer span,
+.textLayer br {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0 0%;
+}
+
+.textLayer ::selection {
+  background: rgba(99, 102, 241, 0.35);
+}
+
+.textLayer .highlight {
+  margin: -1px;
+  padding: 1px;
+  background-color: rgba(99, 102, 241, 0.25);
+  border-radius: 2px;
+}
+
+/* Slim, quiet scrollbars for the reader pane */
+.reader-scroll::-webkit-scrollbar,
+.overflow-y-auto::-webkit-scrollbar {
+  width: 10px;
+}
+
+.reader-scroll::-webkit-scrollbar-thumb,
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: 9999px;
+}
+
+.reader-scroll::-webkit-scrollbar-thumb:hover,
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+  background-clip: content-box;
+}

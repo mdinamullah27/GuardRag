@@ -1,0 +1,32 @@
+[project]
+name = "guardrag-backend"
+version = "0.1.0"
+description = "GuardRAG backend — PDF chat with evidence guard and semantic LLM cache."
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "python-multipart>=0.0.9",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "SQLAlchemy>=2.0",
+    "psycopg[binary]>=3.1",
+    "pgvector>=0.3",
+    "PyMuPDF>=1.24",
+    "sentence-transformers>=3.0",
+    "httpx>=0.27",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
