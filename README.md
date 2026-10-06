@@ -39,6 +39,22 @@ factual path is untouched — same three LLM calls, same latency.
 
 ---
 
+## Screenshots
+
+**1 · Upload** — drop a PDF; SHA-256 dedup, tables/metadata/OCR extraction, local embedding:
+
+![GuardRAG upload screen with drag-and-drop PDF dropzone](docs/screenshots/upload.png)
+
+**2 · Reader + chat** — full-width pdf.js reader with page sidebar; the floating chat opens
+with suggested questions and never takes space from the page:
+
+![PDF reader showing a research paper with the floating chat panel and suggested questions](docs/screenshots/chat-suggestions.png)
+
+**3 · Grounded answer** — the chat answers questions about the document that is open in the
+reader (evidence-checked; answers never come from outside the PDF):
+
+![Chat answering a question about k-fold cross validation deep inside a 28-page paper](docs/screenshots/answered-question.png)
+
 ## Architecture
 
 ```text
@@ -241,7 +257,7 @@ When extraction found problems (pages without a usable text layer, OCR recovery)
 carries a human-readable note:
 
 ```json
-{ "document_id": "8f0a…", "filename": "scan.pdf", "pages": 40, "status": "ready", "reused": false,
+{ "document_id": "8f0a…", "fWhat evidence does this question require?”ilename": "scan.pdf", "pages": 40, "status": "ready", "reused": false,
   "warning": "38 of 40 pages have no usable text layer (possibly scanned images); answers may be incomplete. OCR recovered text from 38 page(s)." }
 ```
 
@@ -359,6 +375,7 @@ guardrag/
 │   │   └── FloatingChat.tsx   # FAB + fixed overlay panel, mode/coverage chips
 │   ├── lib/                   # typed API client
 │   └── public/pdf.worker.min.mjs   # copied from pdfjs-dist on postinstall
+├── docs/screenshots/      # README images
 └── README.md
 ```
 
